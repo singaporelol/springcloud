@@ -1,0 +1,29 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: userservice
+  datasource:
+    url: jdbc:mysql://localhost:3306/spring6?useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+      discovery:
+        cluster-name: SH
+mybatis:
+  type-aliases-package: com.xueqian.userservice.pojo
+  configuration:
+    map-underscore-to-camel-case: true
+
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:10086/eureka/
+logging:
+  level:
+    com.xueqian: debug
+  pattern:
+    dateformat: MM-dd HH:mm:ss:SSS

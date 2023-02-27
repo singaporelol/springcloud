@@ -1,0 +1,33 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: orderservice
+  datasource:
+    url: jdbc:mysql://localhost:3306/spring6?useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+      discovery:
+        cluster-name: HZ
+    loadbalancer:
+      nacos:
+        enabled: true
+mybatis:
+  type-aliases-package: com.xueqian.orderservice.pojo
+  configuration:
+    map-underscore-to-camel-case: true
+  #mapper-locations: classpath:com.xueqian.orderservice.mapper/*.xml
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:10086/eureka/
+
+logging:
+  level:
+    com.xueqian: debug
+  pattern:
+    dateformat: MM-dd HH:mm:ss:SSS
