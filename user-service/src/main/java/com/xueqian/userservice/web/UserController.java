@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,16 +24,20 @@ import java.util.Locale;
 @RestController
 @RequestMapping("/user")
 @EnableDiscoveryClient
+@RefreshScope
 public class UserController {
 
     @Resource
     private UserService userService;
-    @Resource
-    private ConfigProperties configProperties;
+//    @Resource
+//    private ConfigProperties configProperties;
 
     // @NacosValue()
-    // @Value("${pattern:dateformat}")
-    // private String dateformat;
+     @Value("${pattern.dateformat}")
+     private String dateformat;
+
+     @Value("${pattern.envSharedValue}")
+     private String envSharedValue;
     /**
      * 路径： /user/110
      *
@@ -44,11 +49,15 @@ public class UserController {
 
         return userService.queryById(id);
     }
+//    @GetMapping("/now")
+//    public String now(){
+//        String dateformat = configProperties.getDateformat();
+//        return LocalDateTime.now().format(DateTimeFormatter.ofPattern(dateformat));
+//    }
     @GetMapping("/now")
     public String now(){
-        String dateformat = configProperties.getDateformat();
+        System.out.println(envSharedValue);
         return LocalDateTime.now().format(DateTimeFormatter.ofPattern(dateformat));
     }
-
 
 }
