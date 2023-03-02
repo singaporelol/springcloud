@@ -1,18 +1,18 @@
 server:
   port: 8081
 spring:
-  application:
-    name: userservice
+#  application:
+#    name: userservice
   datasource:
     url: jdbc:mysql://localhost:3306/spring6?useSSL=false
     username: root
-    password: root
+    password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
-  cloud:
-    nacos:
-      server-addr: localhost:8848
-      discovery:
-        cluster-name: SH
+#  cloud:
+#    nacos:
+#      server-addr: localhost:8848
+#      discovery:
+#        cluster-name: SH
 mybatis:
   type-aliases-package: com.xueqian.userservice.pojo
   configuration:
