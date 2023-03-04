@@ -36,8 +36,8 @@ public class UserController {
      @Value("${pattern.dateformat}")
      private String dateformat;
 
-     @Value("${pattern.envSharedValue}")
-     private String envSharedValue;
+     // @Value("${pattern.envSharedValue}")
+     // private String envSharedValue;
     /**
      * 路径： /user/110
      *
@@ -56,7 +56,7 @@ public class UserController {
 //    }
     @GetMapping("/now")
     public String now(){
-        System.out.println(envSharedValue);
+        // System.out.println(envSharedValue);
         return LocalDateTime.now().format(DateTimeFormatter.ofPattern(dateformat));
     }
 
