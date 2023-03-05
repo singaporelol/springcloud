@@ -1,9 +1,9 @@
 package com.xueqian.orderservice.service;
 
-import com.xueqian.orderservice.FeignClientDemo.UserClient;
+import com.xueqian.feign.clients.UserClient;
+import com.xueqian.feign.pojo.User;
 import com.xueqian.orderservice.mapper.OrderMapper;
 import com.xueqian.orderservice.pojo.Order;
-import com.xueqian.orderservice.pojo.User;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;

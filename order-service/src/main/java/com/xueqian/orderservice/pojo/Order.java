@@ -1,5 +1,6 @@
 package com.xueqian.orderservice.pojo;
 
+import com.xueqian.feign.pojo.User;
 import lombok.Data;
 
 @Data

@@ -16,12 +16,12 @@ spring:
     loadbalancer:
       nacos:
         enabled: true
-
-    openfeign:
-      client:
-        config:
-          default:
-            logger-level: FULL
+# feign use at order-service, now move to feign-api module
+#    openfeign:
+#      client:
+#        config:
+#          default:
+#            logger-level: FULL
 
 mybatis:
   type-aliases-package: com.xueqian.orderservice.pojo

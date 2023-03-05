@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 @MapperScan(basePackages = {"com.xueqian.orderservice.mapper"})
 @EnableDiscoveryClient
 // @EnableFeignClients(defaultConfiguration = DefaultFeignConfiguration.class)
-@EnableFeignClients
+@EnableFeignClients(basePackages = "com.xueqian.feign.clients")
 public class OrderServiceApplication {
 
     public static void main(String[] args) {
