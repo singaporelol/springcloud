@@ -16,6 +16,13 @@ spring:
     loadbalancer:
       nacos:
         enabled: true
+
+    openfeign:
+      client:
+        config:
+          default:
+            logger-level: FULL
+
 mybatis:
   type-aliases-package: com.xueqian.orderservice.pojo
   configuration:
