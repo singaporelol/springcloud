@@ -10,10 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -33,11 +30,12 @@ public class UserController {
 //    private ConfigProperties configProperties;
 
     // @NacosValue()
-     @Value("${pattern.dateformat}")
-     private String dateformat;
+    @Value("${pattern.dateformat}")
+    private String dateformat;
 
-     // @Value("${pattern.envSharedValue}")
-     // private String envSharedValue;
+    // @Value("${pattern.envSharedValue}")
+    // private String envSharedValue;
+
     /**
      * 路径： /user/110
      *
@@ -45,17 +43,20 @@ public class UserController {
      * @return 用户
      */
     @GetMapping("/{id}")
-    public User queryById(@PathVariable("id") Long id) {
-
+    // @RequestHeader(value = "Truth", required = false) String truth,用于测试Gateway的过滤器，可以删掉
+    public User queryById(@RequestHeader(value = "Truth", required = false) String truth,
+                          @PathVariable("id") Long id) {
+        System.out.println(truth);
         return userService.queryById(id);
     }
-//    @GetMapping("/now")
+
+    //    @GetMapping("/now")
 //    public String now(){
 //        String dateformat = configProperties.getDateformat();
 //        return LocalDateTime.now().format(DateTimeFormatter.ofPattern(dateformat));
 //    }
     @GetMapping("/now")
-    public String now(){
+    public String now() {
         // System.out.println(envSharedValue);
         return LocalDateTime.now().format(DateTimeFormatter.ofPattern(dateformat));
     }

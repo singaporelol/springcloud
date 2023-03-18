@@ -1,0 +1,27 @@
+server:
+  port: 10010
+spring:
+  application:
+    name: gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    gateway:
+      routes:
+        - id: user-service #canbe any
+          #uri: http://localhost:8081
+          #nacos loadbalance, must have spring-cloud-loadbalancer
+          uri: lb://userservice
+          predicates:
+            - Path=/user/**
+          filters:
+            - AddRequestHeader=Truth, Itcast is freaking awesome2222!
+        - id: order-service
+          uri: lb://orderservice
+          predicates:
+            - Path=/order/**
+      #            - Before=2031-04-13T15:14:47.433+08:00[Asia/Shanghai]
+      #            - After=2037-01-20T17:42:47.789-07:00[America/Denver]
+      default-filters:
+        - AddRequestHeader=Truth,Itcast is freaking awesome!
