@@ -2,6 +2,9 @@ package com.xueqian.gateway.filter;
 
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
+import org.springframework.cloud.gateway.route.RouteLocator;
+import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
+import org.springframework.context.annotation.Bean;
 import org.springframework.core.Ordered;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
@@ -33,4 +36,5 @@ public class AuthorizeFilter implements GlobalFilter, Ordered {
     public int getOrder() {
         return -1;
     }
+
 }

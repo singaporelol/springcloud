@@ -23,5 +23,25 @@ spring:
             - Path=/order/**
       #            - Before=2031-04-13T15:14:47.433+08:00[Asia/Shanghai]
       #            - After=2037-01-20T17:42:47.789-07:00[America/Denver]
+        - id: test
+          uri: http://localhost:3101
+          predicates:
+            - Path=/test/**
+
       default-filters:
         - AddRequestHeader=Truth,Itcast is freaking awesome!
+      globalcors: # 全局的跨域处理
+        add-to-simple-url-handler-mapping: true # 解决options请求被拦截问题
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: # 允许哪些网站的跨域请求,这里写前端访问的端口
+              - "http://localhost:3000"
+            allowedMethods: # 允许的跨域ajax的请求方式
+              - "GET"
+              - "POST"
+              - "DELETE"
+              - "PUT"
+              - "OPTIONS"
+            allowedHeaders: "*" # 允许在请求中携带的头信息
+            allowCredentials: true # 是否允许携带cookie
+            maxAge: 360000 # 这次跨域检测的有效期
