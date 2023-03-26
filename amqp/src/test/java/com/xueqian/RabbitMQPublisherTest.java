@@ -1,3 +1,5 @@
+package com.xueqian;
+
 import com.rabbitmq.client.*;
 import org.junit.jupiter.api.Test;
 
@@ -6,6 +8,10 @@ import java.util.concurrent.TimeoutException;
 
 
 public class RabbitMQPublisherTest {
+    /***
+     * 使用RabbitMQ发送消息和接收消息
+     * 这个是是最基本的使用原生方式，发送RabbitMQ消息
+     */
     @Test
     public void testSendMessage() throws IOException, TimeoutException {
         // 1、创建连接工厂
@@ -32,8 +38,6 @@ public class RabbitMQPublisherTest {
         connection.close();
 
     }
-
-
     @Test
     public void testReceiveMessage() throws IOException, TimeoutException {
         // 1.建立连接
@@ -64,4 +68,6 @@ public class RabbitMQPublisherTest {
         System.out.println("等待接收消息。。。。");
 
     }
+
+
 }
